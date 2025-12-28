@@ -50,7 +50,7 @@ The project is intentionally designed to focus on **Java fundamentals** and foll
 
 1. Clone the repository:
    ```bash
-   git clone <your-github-repository-url>
+   git clone https://github.com/sayantanbrahma92-boop/LearnTrack.git
    
 2. # 📘 LearnTrack – Student & Course Management System (Core Java)
 
