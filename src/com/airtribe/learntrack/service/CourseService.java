@@ -1,10 +1,12 @@
 package com.airtribe.learntrack.service;
 
 import com.airtribe.learntrack.entity.Course;
+import com.airtribe.learntrack.enums.CourseStatus;
 import com.airtribe.learntrack.exception.EntityNotFoundException;
 import com.airtribe.learntrack.exception.InvalidInputException;
 import com.airtribe.learntrack.repository.CourseRepository;
 import com.airtribe.learntrack.util.IdGenerator;
+import com.airtribe.learntrack.util.InputValidator;
 
 import java.util.List;
 
@@ -32,12 +34,9 @@ public class CourseService {
 
     public void addCourse(String name, String description, int durationInWeeks) {
 
-        if (name == null || name.isBlank()) {
-            throw new InvalidInputException("Course name cannot be empty");
-        }
-        if (durationInWeeks <= 0) {
-            throw new InvalidInputException("Duration must be greater than zero");
-        }
+        InputValidator.validateString(name, "Course name");
+        InputValidator.validateString(description, "Course description");
+        InputValidator.validatePositiveNumber(durationInWeeks, "Course duration");
 
         Long id = IdGenerator.generateCourseId();
 
@@ -61,14 +60,18 @@ public class CourseService {
 
     public void deactivateCourse(Long id){
         Course course=getCourseById(id);
-        course.setActive(false);
+        course.setActive(CourseStatus.INACTIVE);
     }
 
     public void toggleCourseStatus(Long id) {
 
         Course course = getCourseById(id);
 
-        course.setActive(!course.getIsActive());
+        if (course.getIsActive() == CourseStatus.ACTIVE){
+            course.setActive(CourseStatus.INACTIVE);
+        } else {
+            course.setActive(CourseStatus.ACTIVE);
+        }
     }
 
 

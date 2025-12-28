@@ -256,7 +256,7 @@ public class Main {
         }
 
         for (Course course : courses) {
-            System.out.println(courses);
+            System.out.println(course);
         }
     }
 

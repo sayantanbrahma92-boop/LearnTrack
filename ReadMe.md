@@ -139,8 +139,8 @@ The project is intentionally designed to focus on **Java fundamentals** and foll
     ├── service       → Business logic
     ├── repository    → In-memory data storage
     ├── exception     → Custom exceptions
-    ├── util          → ID generator utilities
-    ├── enums         → EnrollmentStatus
+    ├── util          → ID generator utilities, InputValidatorUtils
+    ├── enums         → EnrollmentStatus, CourseStatus
     └── ui            → Console UI (Main.java)
 
 ### 🏁 Conclusion

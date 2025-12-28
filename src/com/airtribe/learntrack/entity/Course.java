@@ -1,4 +1,5 @@
 package com.airtribe.learntrack.entity;
+import com.airtribe.learntrack.enums.CourseStatus;
 
 /**
  * Course entity representing a course.
@@ -11,19 +12,19 @@ public class Course{
     private String courseName;
     private String description;
     private int durationInWeeks;
-    private boolean active;
+    private CourseStatus status;
 
     // ========== Constructors ==========
     public Course(){
-        this.active=true;
+        this.status=CourseStatus.ACTIVE;
     }
 
-    public Course(Long id, String courseName, String description, int durationInWeeks, boolean active){
+    public Course(Long id, String courseName, String description, int durationInWeeks, String active){
         this.id=id;
         this.courseName=courseName;
         this.description=description;
         this.durationInWeeks=durationInWeeks;
-        this.active=true;
+        this.status=CourseStatus.ACTIVE;
     }
 
     public Course(Long id, String courseName, String description, int durationInWeeks) {
@@ -31,7 +32,7 @@ public class Course{
         this.courseName = courseName;
         this.description = description;
         this.durationInWeeks = durationInWeeks;
-        this.active = true; // default
+        this.status = CourseStatus.ACTIVE; // default
     }
 
 
@@ -64,12 +65,12 @@ public class Course{
         return durationInWeeks;
     }
 
-    public boolean getIsActive(){
-        return active;
+    public CourseStatus getIsActive(){
+        return status;
     }
 
-    public void setActive(boolean active){
-        this.active=active;
+    public void setActive(CourseStatus status){
+        this.status=status;
     }
 
     @Override

@@ -4,6 +4,7 @@ import com.airtribe.learntrack.entity.Student;
 import com.airtribe.learntrack.exception.EntityNotFoundException;
 import com.airtribe.learntrack.repository.StudentRepository;
 import com.airtribe.learntrack.util.IdGenerator;
+import com.airtribe.learntrack.util.InputValidator;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class StudentService {
     }
 
     public void addStudent(String firstName, String lastName, String email, String batch) {
+        InputValidator.validateString(firstName, "First name");
+        InputValidator.validateString(lastName, "Last name");
+        InputValidator.validateString(batch, "Batch");
         Long id = IdGenerator.generateStudentId();
         Student student = new Student(id, firstName, lastName, email, batch);
         studentRepository.addStudent(student);
